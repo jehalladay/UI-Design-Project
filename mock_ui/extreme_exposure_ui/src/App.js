@@ -106,12 +106,7 @@ class Navigator extends React.Component {
 //       </header>
 //       <div className="graph-container">
 //         <img src={Graph} alt="Graph" />
-//       </div>
-//       <div className="category-selector">
-//         <h2>Categories</h2>
-//         <ul>
-//           <li>
-//             <label>
+//       </div>newSeed
 //               <input
 //                 type="checkbox"
 //                 value="Category A"
@@ -147,7 +142,7 @@ class Navigator extends React.Component {
 //       </div>
 //     </div>
 //   );
-// }
+// }newSeed
 
 // export default Dashboard;
 
@@ -222,9 +217,198 @@ function Analytics() {
   return <h2>Analytics</h2>;
 }
 
-function Settings() {
-  return <h2>Settings</h2>;
+function ProjectSettings() {
+
+    const [col1Fields, setCol1Fields] = useState([
+        {name: "Project Name", value: "Superauto"},
+        {name: "Subject website", value: "www.carsensei.com"},
+        {name: "Target audience", value: "CPO Buyer"},
+        {name: "Geographic area", value: "US - East Coast"}
+    ])
+
+    const [col2Fields, setCol2Fields] = useState([
+        {name: "Industry", value: "Auto - Sales"}
+    ])
+
+    const [seeds, setSeeds] = useState([
+        {id: 1, value:"test Drive"},
+        {id: 2, value:"used Cars"},
+        {id: 3, value:"auto loans"},
+        {id: 4, value:"dealership"},
+        {id: 5, value:"reviews"},
+        {id: 6, value:"online car shopping"},
+        {id: 7, value:"car promotions"},
+        {id: 8, value:"auto sales"}
+    ])
+
+    const deleteSeed = (id) => {
+        setSeeds(
+            seeds.filter((item) => item.id !== id)
+        );
+      };
+
+    const handleSeedAdd = (event) => {
+        if (event.key === 'Enter') {
+          const newSeed = {id: seeds.length, value: event.target.value};
+      
+          // Add the new item to the state
+          setSeeds([...seeds, newSeed]);
+      
+          // Clear the input field
+          event.target.value = '';
+        }
+    };
+    
+    return (
+        <div className="settings-section">
+        <div className="settings-column">
+            {col1Fields.map((field) => (
+                <div className="settings-field" name={field.name}>
+                    <span className="field-label">{field.name}</span>
+                    <input type="text" defaultValue={field.value} />
+                </div>
+                
+            ))}
+        </div>
+        <div className="settings-column">
+            {col2Fields.map((field) => (
+                <div className="settings-field" name={field.name}>
+                    <span className="field-label">{field.name}</span>
+                    <input type="text" defaultValue={field.value} />
+                </div>
+                
+            ))}
+            <div className="settings-field">
+                <span className="field-label seed-field" >Seed Keywords</span>
+                <span className="add-seed">
+                    <span>Add seed:</span>
+                    <input type="text" onKeyDown={handleSeedAdd}/>
+                </span>
+            </div>
+            <div className="seeds-module-body">
+                {seeds.map((seed) => (
+                    <li key={seed.id}>
+                    <span>
+                        <span className="seed-name">{seed.value}</span>
+                        <button
+                            id={`seed-${seed.id}`}
+                            onClick={() => deleteSeed(seed.id)}
+                        >X</button>
+                    </span>
+                    <label htmlFor={`seed-${seed.id}`}>
+                        {seed.name}
+                    </label>
+                    </li>
+                ))}
+            </div>
+
+        </div>
+        </div>
+    );
 }
+
+function AccountSettings() {
+
+    const [col1Fields, setCol1Fields] = useState([
+        {name: "Account Name", value: "Superauto"},
+        {name: "Email address", value: "boss@superauto.com"},
+        {name: "Phone number", value: "970-128-1839"},
+        {name: "Country", value: "United States"}
+    ])
+
+
+    const [col2Fields, setCol2Fields] = useState([
+        {name: "Street address 1", value: "1924 Victory Lane"},
+        {name: "Street address 2", value: "Unit #4"},
+        {name: "Zip code", value: "81501"},
+        {name: "State", value: "CO"}
+    ])
+
+
+    return (
+        <div className="settings-section">
+        <div className="settings-column">
+            {col1Fields.map((field) => (
+                <div className="settings-field" name={field.name}>
+                    <span className="field-label">{field.name}</span>
+                    <input type="text" defaultValue={field.value} />
+                </div>
+                
+            ))}
+        </div>
+        <div className="settings-column">
+            {col2Fields.map((field) => (
+                <div className="settings-field" name={field.name}>
+                    <span className="field-label">{field.name}</span>
+                    <input type="text" defaultValue={field.value} />
+                </div>
+                
+            ))}
+        </div>
+        </div>
+    );
+}
+
+
+function Settings() {
+    const [activeTab, setActiveTab] = useState('project');
+    const [projectName, setProjectName] = useState('Project A');
+    const [categories, setCategories] = useState([
+      { id: 1, name: 'Category A', checked: true },
+      { id: 2, name: 'Category B', checked: false },
+      { id: 3, name: 'Category C', checked: true },
+      { id: 4, name: 'Category D', checked: false },
+    ]);
+
+    const handleProjectChange = (e) => {
+      setProjectName(e.target.value);
+    };
+  
+    const handleTabChange = (tabName) => {
+        setActiveTab(tabName);
+      };
+
+    return (
+        <div className="dashboard">
+        <div className="header">
+            <div className="project-selector">
+            <select value={projectName} onChange={handleProjectChange}>
+                <option value="Project A">Project A</option>
+                <option value="Project B">Project B</option>
+                <option value="Project C">Project C</option>
+            </select>
+            <i className="arrow"></i>
+            <div className="page-title-box">
+                <h2 className="page-title">Settings</h2>
+            </div>
+            </div>
+        </div>
+        <div className="settings-body">
+            <div className="settings-selector">
+                <button
+                className={activeTab === 'project' ? 'selector-btn active' : 'selector-btn'}
+                onClick={() => handleTabChange('project')}>
+                    Project
+                </button>
+                <button
+                className={activeTab === 'account' ? 'selector-btn active' : 'selector-btn'}
+                onClick={() => handleTabChange('account')}>
+                    Account
+                </button>
+            </div>
+            {activeTab === 'project' && <ProjectSettings />}
+            {activeTab === 'account' && <AccountSettings />}
+            <div className='settings-save-btn'> 
+                <button >Save</button>
+            </div>       
+        </div>
+        </div>
+      );
+
+    
+}
+
+
 
 function App() {
     return (

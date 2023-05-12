@@ -196,3 +196,122 @@ nav button:hover {
 .category-list input[type='checkbox'] {
   margin-right: 8px;
 }
+
+/* -------------- */
+
+.settings-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  padding: 16px;
+  background-color: #F0F1F5;
+  margin-left:15%;
+}
+
+.settings-selector {
+  width:80%;
+  background-color: white;
+  border-radius:9px;
+  display:flex;
+}
+
+.settings-selector .selector-btn {
+  background: white;
+  border: none;
+  border-radius: 9px;
+  font-size: 1.3em;
+  font-weight: bold;
+  text-align: center;
+  padding: 5px;
+  width:50%;
+}
+
+.selector-btn.active {
+  color:white;
+  background-color: #008FF8;
+}
+
+.settings-section {
+  display: flex;
+  align-content: stretch;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.settings-column {
+  min-width: 30%;
+}
+
+.settings-field {
+  display:flex;
+  flex-direction: column;
+}
+
+.settings-field input {
+  border-radius: 9px;
+  border: 2px solid #AAA;
+  min-height:30px;
+  font-size: 1em;
+  padding: 5px 10px;
+}
+
+.seeds-module-body {
+  margin-top: 20px;
+  list-style-type: none;
+  display: flex;
+  max-width: 400px;
+  flex-wrap: wrap;
+}
+
+.seed-name {
+  margin-right:5px;
+}
+
+.add-seed input {
+  margin-left:10px;
+  min-height: auto;
+}
+
+.seeds-module-body li {
+  border: 2px solid #AAA;
+  background-color: white;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  margin:5px;
+}
+
+.seeds-module-body button {
+  border: none;
+  background: none;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+
+.field-label {
+  margin: 20px auto 7px 0;
+  font-weight: bold;
+}
+
+.settings-save-btn {
+  width: 80%;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.settings-save-btn button {
+  margin-top: 30px;
+  background: #006CCA;
+  color: white;
+  border: none;
+  border-radius: 9px;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 5px 30px;
+}
+
+.settings-save-btn button:hover {
+  background: #008FF8;
+}
