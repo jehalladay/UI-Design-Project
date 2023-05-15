@@ -23,12 +23,13 @@ nav {
   position: fixed;
   top: 0;
   left: 0;
-  width: 200px;
+  width: 275px;
   height: 100%;
   background-color: #f2f2f2;
   border-radius: 20px 0 0 20px;
   padding: 20px;
   box-sizing: border-box;
+  border-right: 1px solid #b8b8b8;
 }
 
 .logo {
@@ -45,15 +46,19 @@ nav {
 .nav-buttons button {
   display: block;
   width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 21px;
   border: none;
   background-color: #fff;
   color: #333;
-  font-size: 16px;
-  text-align: left;
+  font-size: 20px;
   cursor: pointer;
   border-radius: 10px;
+  text-decoration: none;
+  text-align: center;
+  padding: 14px 0;
+}
+
+.nav-buttons a {
   text-decoration: none;
 }
 
