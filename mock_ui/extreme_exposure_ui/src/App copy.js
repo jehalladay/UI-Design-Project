@@ -30,7 +30,7 @@ class Navigator extends React.Component {
                 <div className="nav-buttons">
                     <Link to="/dashboard"><button>Dashboard</button></Link>
                     <Link to="/analytics"><button>Analytics</button></Link>
-                    <Link to="/settings"><button>Settings</button></Link>
+                    <Link to="/settings"><button>Settings</button></Link> 
                     {/* <Link to="/dashboard">Dashboard</Link>
                     <Link to="/analytics">Analytics</Link>
                     <Link to="/settings">Settings</Link> */}
